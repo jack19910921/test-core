@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vip.test.repository.BusDataDictRepository" >
+  <resultMap id="BaseResultMap" type="com.vip.test.entity.BusDataDict" >
+    <id column="dict_id" property="dictId" jdbcType="BIGINT" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="cfg_key" property="cfgKey" jdbcType="VARCHAR" />
+    <result column="cfg_value" property="cfgValue" jdbcType="VARCHAR" />
+    <result column="cfg_name" property="cfgName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
+  </resultMap>
+
+ <sql id="Base_Column_List" >
+   dict_id,
+   cfg_type,
+   cfg_key,
+   cfg_value,
+   cfg_name,
+   create_time,
+   update_time,
+   is_deleted
+ </sql>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.vip.test.entity.BusDataDict" >
+    update bus_data_dict
+	  <set>
+       <if test="cfgType != null" >
+        cfg_type= #{cfgType,jdbcType=VARCHAR},
+       </if>
+       <if test="cfgKey != null" >
+        cfg_key= #{cfgKey,jdbcType=VARCHAR},
+       </if>
+       <if test="cfgValue != null" >
+        cfg_value= #{cfgValue,jdbcType=VARCHAR},
+       </if>
+       <if test="cfgName != null" >
+        cfg_name= #{cfgName,jdbcType=VARCHAR},
+       </if>
+       <if test="createTime != null" >
+        create_time= #{createTime,jdbcType=TIMESTAMP},
+       </if>
+       <if test="updateTime != null" >
+        update_time= #{updateTime,jdbcType=TIMESTAMP},
+       </if>
+       <if test="isDeleted != null" >
+        is_deleted= #{isDeleted,jdbcType=TINYINT},
+       </if>
+          </set>
+    where dict_id = #{dictId,jdbcType=BIGINT}
+  </update>
+
+    <select id="selectValueByKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from bus_data_dict
+        where is_deleted = 0 and cfg_key = #{cfgKey,jdbcType=VARCHAR}
+    </select>
+ </mapper>
+  
+
+  
+	
