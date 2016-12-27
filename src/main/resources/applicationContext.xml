@@ -15,11 +15,12 @@
 
     <tx:annotation-driven order="400"/>
 
-    <kiwi-data:datasource id="kiwiDataSource">
-    </kiwi-data:datasource>
+    <kiwi-data:datasource id="routingDataSource"/>
+
+    <kiwi-data:read-write pointcut-expression="@annotation(org.kiwi.data.annotation.ReadWrite)"/>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="kiwiDataSource"/>
+        <property name="dataSource" ref="routingDataSource"/>
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
 
@@ -31,7 +32,7 @@
 
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="kiwiDataSource"/>
+        <property name="dataSource" ref="routingDataSource"/>
     </bean>
 
 </beans>
