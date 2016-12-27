@@ -11,4 +11,6 @@ public interface BusDataDictRepository {
     int updateByPrimaryKeySelective(BusDataDict busDataDict);
 
     BusDataDict selectValueByKey(String cfgKey);
+
+    BusDataDict selectValueByKey1(String cfgKey);
 }

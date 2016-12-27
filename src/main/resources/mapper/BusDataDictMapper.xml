@@ -57,6 +57,13 @@
         from bus_data_dict
         where is_deleted = 0 and cfg_key = #{cfgKey,jdbcType=VARCHAR}
     </select>
+
+    <select id="selectValueByKey1" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from $[test_TableSharding]$
+        where is_deleted = 0 and cfg_key = #{cfgKey,jdbcType=VARCHAR}
+    </select>
  </mapper>
   
 

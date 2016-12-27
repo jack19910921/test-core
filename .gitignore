@@ -40,7 +40,7 @@ venus-*/src/main/java/META-INF/MANIFEST.MF
 *.ipr
 *.iws
 .idea
-.properties
+*.properties
 out
 test-output
 atlassian-ide-plugin.xml
