@@ -17,7 +17,11 @@
 
     <kiwi-data:datasource id="routingDataSource"/>
 
-    <kiwi-data:read-write pointcut-expression="@annotation(org.kiwi.data.annotation.ReadWrite)"/>
+    <kiwi-data:read-write/>
+
+    <kiwi-data:db-sharding strategy-scan-package="com.vip.test.strategy.db"/>
+
+    <kiwi-data:table-sharding strategy-scan-package="com.vip.test.strategy.table" connection-mode="proxy"/>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="routingDataSource"/>
