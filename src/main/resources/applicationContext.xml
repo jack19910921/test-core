@@ -9,7 +9,9 @@
 	   http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 	   http://www.kiwi.org/schema/data http://www.kiwi.org/schema/data/kiwi-data-1.0.xsd">
 
-    <!--<context:component-scan base-package="com.vip.test"/> todo -->
+    <context:component-scan base-package="com.vip.test">
+        <context:exclude-filter type="regex" expression=".*Controller$"/>
+    </context:component-scan>
 
     <context:annotation-config/>
 

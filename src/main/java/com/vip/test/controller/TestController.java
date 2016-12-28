@@ -19,21 +19,21 @@ public class TestController {
     @Autowired
     TestService testService;
 
-    @RequestMapping(value = "/doReadWrite", method = RequestMethod.POST)
+    @RequestMapping(value = "/doReadWrite", method = RequestMethod.GET)
     public void doReadWrite() {
-        BusDataDict busDataDict = testService.findValueByKey("");
+        BusDataDict busDataDict = testService.findValueByKey("SMS.CODE.OPEN.FREE");
         log.info("result:" + busDataDict);
     }
 
-    @RequestMapping(value = "/doDbSharding", method = RequestMethod.POST)
+    @RequestMapping(value = "/doDbSharding", method = RequestMethod.GET)
     public void doDbSharding() {
-        BusDataDict busDataDict = testService.findValueByKey1("");
+        BusDataDict busDataDict = testService.findValueByKey1("SMS.CODE.OPEN.FREE");
         log.info("result:" + busDataDict);
     }
 
-    @RequestMapping(value = "/doTableSharding", method = RequestMethod.POST)
+    @RequestMapping(value = "/doTableSharding", method = RequestMethod.GET)
     public void doTableSharding() {
-        BusDataDict busDataDict = testService.findValueByKey2("");
+        BusDataDict busDataDict = testService.findValueByKey2("SMS.CODE.OPEN.FREE");
         log.info("result:" + busDataDict);
     }
 

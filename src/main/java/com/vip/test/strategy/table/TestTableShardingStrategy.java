@@ -14,7 +14,7 @@ public class TestTableShardingStrategy implements TableShardingStrategy {
 
     @Override
     public String determineCurrentSql(String rawSql, String strategyName, Object shardParameter) {
-        String sql = ShardingUtil.replaceAll("bus_data_dict_01", strategyName, rawSql);
+        String sql = ShardingUtil.replaceAll(strategyName, "bus_data_dict_01", rawSql);
         log.info(sql);
         return sql;
     }
