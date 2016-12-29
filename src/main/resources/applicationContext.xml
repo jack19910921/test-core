@@ -3,15 +3,21 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:kiwi-http="http://www.kiwi.org/schema/http"
        xmlns:kiwi-data="http://www.kiwi.org/schema/data"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 	   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 	   http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	   http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+	   http://www.kiwi.org/schema/http http://www.kiwi.org/schema/http/kiwi-http-1.0.xsd
 	   http://www.kiwi.org/schema/data http://www.kiwi.org/schema/data/kiwi-data-1.0.xsd">
 
     <context:component-scan base-package="com.vip.test">
         <context:exclude-filter type="regex" expression=".*Controller$"/>
     </context:component-scan>
+
+    <kiwi-http:http-support/>
 
     <context:annotation-config/>
 
@@ -39,6 +45,35 @@
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="routingDataSource"/>
+    </bean>
+
+    <!-- thread pool support -->
+    <task:annotation-driven executor="executorWithCallerRunsPolicy"/>
+    <task:executor id="executorWithCallerRunsPolicy" keep-alive="60" pool-size="15-20"
+                   queue-capacity="30" rejection-policy="CALLER_RUNS"/>
+
+    <!-- send mail support -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.qq.com"/>
+        <property name="port" value="465"/>
+        <property name="username" value="xxx"/>
+        <property name="password" value="xxx"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.ssl.enable">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="velocityProperties">
+            <value>
+                input.encoding=utf-8
+                output.encoding=utf-8
+                resource.loader=class
+                class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+            </value>
+        </property>
     </bean>
 
 </beans>
