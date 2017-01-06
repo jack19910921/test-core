@@ -11,8 +11,7 @@
         <java.version>1.7</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring.version>4.0.5.RELEASE</spring.version>
-        <spring.retry.version>1.1.2.RELEASE</spring.retry.version>
+        <spring.version>4.2.9.RELEASE</spring.version>
         <servletApi.version>3.0.1</servletApi.version>
         <jspApi.version>2.2.1</jspApi.version>
         <elApi.version>2.2.5</elApi.version>
@@ -23,7 +22,7 @@
         <mysql.driver.version>5.1.31</mysql.driver.version>
         <quartz.version>2.2.1</quartz.version>
         <lombok.version>1.14.8</lombok.version>
-        <spring.data.redis.version>1.4.2.RELEASE</spring.data.redis.version>
+        <spring.data.redis.version>1.7.6.RELEASE</spring.data.redis.version>
         <redis.version>2.6.2</redis.version>
         <curator.version>2.7.0</curator.version>
         <junit.version>4.10</junit.version>
@@ -59,20 +58,9 @@
             <version>${spring.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.retry</groupId>
-            <artifactId>spring-retry</artifactId>
-            <version>${spring.retry.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
             <version>${spring.data.redis.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-aop</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- redis -->

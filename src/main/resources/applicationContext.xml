@@ -21,6 +21,8 @@
 
     <context:annotation-config/>
 
+
+<!--
     <tx:annotation-driven order="400"/>
 
     <kiwi-data:datasource id="routingDataSource"/>
@@ -46,7 +48,7 @@
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="routingDataSource"/>
     </bean>
-
+-->
     <!-- thread pool support -->
     <task:annotation-driven executor="executorWithCallerRunsPolicy"/>
     <task:executor id="executorWithCallerRunsPolicy" keep-alive="60" pool-size="15-20"

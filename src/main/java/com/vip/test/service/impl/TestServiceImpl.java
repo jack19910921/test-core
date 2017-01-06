@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TestServiceImpl implements TestService {
 
-    @Autowired
+    @Autowired(required = false)
     private BusDataDictRepository busDataDictRepo;
 
     @Override
