@@ -23,7 +23,7 @@
         <quartz.version>2.2.1</quartz.version>
         <lombok.version>1.14.8</lombok.version>
         <spring.data.redis.version>1.7.6.RELEASE</spring.data.redis.version>
-        <redis.version>2.6.2</redis.version>
+        <redis.version>2.9.0</redis.version>
         <curator.version>2.7.0</curator.version>
         <junit.version>4.10</junit.version>
         <maven.source.plugin.version>2.4</maven.source.plugin.version>
